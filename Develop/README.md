@@ -1,8 +1,8 @@
-# To be added
+# Kent Testing
 
 ## Description
 
-To be added
+This is a test to make sure that my README writer works.
 
 ## Table of Contents
 
@@ -15,30 +15,28 @@ To be added
 
 ## Installation
 
-To be added
+No installation needed
 
 ## Usage
 
-To be added
+Put the contents of this repo into a directory, open the /Develop folder in the console, and enter node index.js into the console
 
 ## License
 
-### Apache 2.0 License
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-https://opensource.org/licenses/Apache-2.0
+N/A
 
 ## Contributing
 
-To be added
+Make a request
 
 ## Tests
 
-To be added
+Try it out
 
 ## Questions
 
 Any questions about this application should be directed to:
 
-GitHub: https://github.com/To be added
+GitHub: https://github.com/ktunebe
 
-Email: To be added
+Email: ktunebe@gmail.com
