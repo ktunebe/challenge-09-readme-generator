@@ -1,122 +1,143 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
-const fs = require('fs')
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown');
+
+const licenseArray = [
+    {
+      name: 'Apache 2.0 License',
+      badge: 'https://img.shields.io/badge/License-Apache%202.0-blue.svg',
+      link: 'https://opensource.org/licenses/Apache-2.0'
+    },
+    {
+      name: 'BSD 3-Clause License',
+      badge: 'https://img.shields.io/badge/License-BSD%203--Clause-blue.svg',
+      link: 'https://opensource.org/licenses/BSD-3-Clause'
+    },
+    {
+      name: 'Creative Commons Attribution 4.0 International',
+      badge: 'https://licensebuttons.net/l/by/4.0/80x15.png',
+      link: 'https://creativecommons.org/licenses/by/4.0/'
+    },
+    {
+      name: 'Eclipse Public License 1.0',
+      badge: 'https://img.shields.io/badge/License-EPL%201.0-red.svg',
+      link: 'https://opensource.org/licenses/EPL-1.0'
+    },
+    {
+      name: 'GNU GPL v3',
+      badge: 'https://img.shields.io/badge/License-GPL%20v3-blue.svg',
+      link: 'https://www.gnu.org/licenses/gpl-3.0'
+    },
+    {
+      name: 'IBM Public License Version 1.0',
+      badge: 'https://img.shields.io/badge/License-IPL%201.0-blue.svg',
+      link: 'https://opensource.org/licenses/IPL-1.0'
+    },
+    {
+      name: 'The MIT License',
+      badge: 'https://img.shields.io/badge/License-MIT-yellow.svg',
+      link: 'https://opensource.org/licenses/MIT'
+    },
+    {
+      name: 'Mozilla Public License 2.0',
+      badge: 'https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg',
+      link: 'https://opensource.org/licenses/MPL-2.0'
+    },
+    {
+      name: 'Open Database License (ODbL)',
+      badge: 'https://img.shields.io/badge/License-ODbL-brightgreen.svg',
+      link: 'https://opendatacommons.org/licenses/odbl/'
+    },
+    {
+      name: 'The Perl License',
+      badge: 'https://img.shields.io/badge/License-Perl-0298c3.svg',
+      link: 'https://opensource.org/licenses/Artistic-2.0'
+    },
+    {
+      name: 'The zlib/libpng License',
+      badge: 'https://img.shields.io/badge/License-Zlib-lightgrey.svg',
+      link: 'https://opensource.org/licenses/Zlib'
+    },
+    {
+      name: 'None',
+      badge: '',
+      link: ''
+    },
+  ]
+
+const [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none] = licenseArray
+const licenses = [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none]
+
+const licenseChoices = []
+licenses.forEach((license) => {
+    const choice = {name: `${license.name}`, value: license}
+    licenseChoices.push(choice)
+})
 
 // TODO: Create an array of questions for user input
 const questions = [
     {
         message: 'What is the title of your project?',
-        name: 'titleInput'
+        name: 'titleInput',
+        default: 'To be added'
     },
     {
-        message: 'How would you describe this project?',
-        name: 'descriptionInput'
+        message: 'How would you describe your project?',
+        name: 'descriptionInput',
+        default: 'To be added'
     },
     {
         message: 'How do you install this application?',
-        name: 'installationInput'
+        name: 'installationInput',
+        default: 'To be added'
     },
     {
         message: 'How do you use this application?',
-        name: 'usageInput'
+        name: 'usageInput',
+        default: 'To be added'
     },
     {
         type: 'list',
         message: 'What type of license does this application have?',
-        choices: ['1', '2', '3'],
+        choices: licenseChoices,
         name: 'licenseInput'
     },
     {
         message: 'How do you contribute to this application?',
-        name: 'contributingInput'
+        name: 'contributingInput',
+        default: 'To be added'
     },
     {
         message: 'How can you test this application?',
-        name: 'testInput'
+        name: 'testInput',
+        default: 'To be added'
     },
     {
         message: 'What is your GitHub username?',
-        name: 'githubInput'
+        name: 'githubInput',
+        default: ''
     },
     {
         message: 'What is your email address?',
-        name: 'emailInput'
+        name: 'emailInput',
+        default: 'To be added'
     },
 
 ];
 
 // TODO: Create a function to write README file
-const writeToREADME = (responseText) => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('README.md', responseText, (err) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve('Data written to README.md');
-            }
-        });
-    });
-};
+const writeToREADME = (data) => {
+        fs.writeFile('README.md', data, (err) => {
+            err ? console.error(err) : console.log('Data written to README.md')
+        })
+    }
 
 
 
 // TODO: Create a function to initialize app
 function init() {
-    inquirer
-        .prompt(questions)
-        .then(answers => {
-            const {titleInput, descriptionInput, installationInput, usageInput, licenseInput, contributingInput, testInput, githubInput, emailInput} = answers;
-
-            // const responseText = `Title: ${titleInput}\nDescription: ${descriptionInput}\nInstallation: ${installationInput}\nUsage: ${usageInput}\nLicense: ${licenseInput}\nContributing: ${contributingInput}\nTesting: ${testInput}\nGitHub: ${githubInput}\nEmail: ${emailInput}`
-
-            responseText = 
-`# ${titleInput}
-
-## Description
-
-${descriptionInput}
-
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
-- [Tests](#tests)
-- [Questions](#questions)
-
-## Installation
-
-${installationInput}
-
-## Usage
-
-${usageInput}
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
-## Contributing
-
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-
-## Tests
-
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
-
-## Questions
-
-Any questions about this application should be directed to:
-
-My GitHub: https://github.com/${githubInput}
-My Email: ${emailInput}`
-
-            writeToREADME(responseText)
-        })
-        .catch(error => {
-            console.error('Error occurred:', error);
-        });
+    generateMarkdown(questions, writeToREADME)
 }
 
 // Function call to initialize app
