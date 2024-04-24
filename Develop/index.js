@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+const {generateMarkdown, runPrompt} = require('./utils/generateMarkdown');
 
 const licenseArray = [
     {
@@ -66,13 +66,17 @@ const licenseArray = [
     },
   ]
 
-const [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none] = licenseArray
-const licenses = [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none]
+// const [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none] = licenseArray
+// const licenses = [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none]
 
-const licenseChoices = []
-licenses.forEach((license) => {
-    const choice = {name: `${license.name}`, value: license}
-    licenseChoices.push(choice)
+// const licenseChoices = []
+// licenses.forEach((license) => {
+//     const choice = {name: `${license.name}`, value: license}
+//     licenseChoices.push(choice)
+// })
+
+const licenseChoices = licenseArray.map(license => {
+    return {name: license.name, value: license}
 })
 
 // TODO: Create an array of questions for user input
@@ -136,8 +140,10 @@ const writeToREADME = (data) => {
 
 
 // TODO: Create a function to initialize app
-function init() {
-    generateMarkdown(questions, writeToREADME)
+async function init() {
+    const answers = await runPrompt(questions)
+    const generatedText = generateMarkdown(answers)
+    writeToREADME(generatedText)
 }
 
 // Function call to initialize app

@@ -23,14 +23,27 @@ function renderLicenseSection(license) {
   return sectionText
 }
 
-// TODO: Create a function to generate markdown for README
-function generateMarkdown(questions, fn) {
-  inquirer
-        .prompt(questions)
-        .then(answers => {
-            const {titleInput, descriptionInput, installationInput, usageInput, licenseInput, contributingInput, testInput, githubInput, emailInput} = answers;
+const runPrompt = async(questions) => {
+  const answers = await inquirer.prompt(questions)
+  return answers
+} 
 
-            const generatedText = 
+
+
+// TODO: Create a function to generate markdown for README
+function generateMarkdown({
+  titleInput, 
+  descriptionInput, 
+  installationInput, 
+  usageInput, 
+  licenseInput, 
+  contributingInput, 
+  testInput, 
+  githubInput, 
+  emailInput
+}) {
+
+const generatedText = 
 
 `# ${titleInput}
 
@@ -77,12 +90,8 @@ GitHub: https://github.com/${githubInput}
 
 Email: ${emailInput}`
 
-        fn(generatedText)
+return generatedText
 
-        })
-        .catch(error => {
-            console.error('Error occurred:', error);
-        });
 }
 
-module.exports = generateMarkdown;
+module.exports = {generateMarkdown, runPrompt};
