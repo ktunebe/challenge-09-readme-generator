@@ -6,7 +6,9 @@ const fs = require('fs');
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
-  return `[![License](${license.badge})](${license.link})`
+  if (license.name === 'None') {
+    return ''
+  } else return `[![License](${license.badge})](${license.link})`
 }
 
 // TODO: Create a function that returns the license section of README
@@ -16,7 +18,7 @@ function renderLicenseSection(license) {
   if (license.name === 'None') {
     sectionText = 'N/A'
   } else {
-    sectionText = `### ${license.name}\n${renderLicenseBadge(license)}`;
+    sectionText = `### ${license.name}\nLicense Information: ${license.link}`;
   }
   return sectionText
 }
@@ -29,7 +31,10 @@ function generateMarkdown(questions, fn) {
             const {titleInput, descriptionInput, installationInput, usageInput, licenseInput, contributingInput, testInput, githubInput, emailInput} = answers;
 
             const generatedText = 
+
 `# ${titleInput}
+
+${renderLicenseBadge(licenseInput)}
 
 ## Description
 

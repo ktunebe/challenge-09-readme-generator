@@ -1,8 +1,10 @@
-# Kent Testing
+# Kent's Test Project
+
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
 
-This is a test to make sure that my README writer works.
+This is a test to check whether my README generator works.
 
 ## Table of Contents
 
@@ -19,19 +21,20 @@ No installation needed
 
 ## Usage
 
-Put the contents of this repo into a directory, open the /Develop folder in the console, and enter node index.js into the console
+Pull the contents of this repo into a local file. Navigate to the /Develop folder in this directory and type node index.js into the command line. You will be prompted with a series of questions about your project. Once the questions are filled out, a README.md file will be written to the current directory.
 
 ## License
 
-N/A
+### The MIT License
+License Information: https://opensource.org/licenses/MIT
 
 ## Contributing
 
-Make a request
+Contact me (information below)
 
 ## Tests
 
-Try it out
+I am testing the application by generating this README.
 
 ## Questions
 
