@@ -1,4 +1,4 @@
-// TODO: Include packages needed for this application
+// TODO:+ Include packages needed for this application
 const inquirer = require('inquirer')
 const fs = require('fs');
 const {generateMarkdown, runPrompt} = require('./utils/generateMarkdown');
@@ -66,20 +66,12 @@ const licenseArray = [
     },
   ]
 
-// const [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none] = licenseArray
-// const licenses = [apache, bsd, creativeCommons, eclipse, gnu, ibm, mit, mozilla, odbl, perl, zlib, none]
-
-// const licenseChoices = []
-// licenses.forEach((license) => {
-//     const choice = {name: `${license.name}`, value: license}
-//     licenseChoices.push(choice)
-// })
 
 const licenseChoices = licenseArray.map(license => {
     return {name: license.name, value: license}
 })
 
-// TODO: Create an array of questions for user input
+// TODO:+ Create an array of questions for user input
 const questions = [
     {
         message: 'What is the title of your project?',
@@ -105,7 +97,8 @@ const questions = [
         type: 'list',
         message: 'What type of license does this application have?',
         choices: licenseChoices,
-        name: 'licenseInput'
+        name: 'licenseInput',
+        loop: false
     },
     {
         message: 'How do you contribute to this application?',
@@ -125,12 +118,13 @@ const questions = [
     {
         message: 'What is your email address?',
         name: 'emailInput',
-        default: 'To be added'
+        default: 'To be added',
+        validate: (input) => input.includes('@')
     },
 
 ];
 
-// TODO: Create a function to write README file
+// TODO:+ Create a function to write README file
 const writeToREADME = (data) => {
         fs.writeFile('README.md', data, (err) => {
             err ? console.error(err) : console.log('Data written to README.md')
@@ -139,7 +133,7 @@ const writeToREADME = (data) => {
 
 
 
-// TODO: Create a function to initialize app
+// TODO:+ Create a function to initialize app
 async function init() {
     const answers = await runPrompt(questions)
     const generatedText = generateMarkdown(answers)

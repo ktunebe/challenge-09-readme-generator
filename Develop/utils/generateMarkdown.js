@@ -3,7 +3,7 @@ const fs = require('fs');
 
 
 
-// TODO: Create a function that returns a license badge based on which license is passed in
+// TODO:+ Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   if (license.name === 'None') {
@@ -11,7 +11,7 @@ function renderLicenseBadge(license) {
   } else return `[![License](${license.badge})](${license.link})`
 }
 
-// TODO: Create a function that returns the license section of README
+// TODO:+ Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
   let sectionText;
@@ -30,7 +30,7 @@ const runPrompt = async(questions) => {
 
 
 
-// TODO: Create a function to generate markdown for README
+// TODO:+ Create a function to generate markdown for README
 function generateMarkdown({
   titleInput, 
   descriptionInput, 
