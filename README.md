@@ -21,7 +21,7 @@ Pull the contents of this repo into a local directory. Navigate to the /Develop 
 
 Type 'node index.js' into the command line to run the program. It will ask you a series of questions and then generate a README.md file based on your answers.
 
-Link to video of app in use: [https://app.screencastify.com/v2/manage/videos/3D4JIPhgk2GViLat7v6z](https://drive.google.com/file/d/17FBWc4GL9Kms-30NDx-fYQlHM0ARlUEs/view)
+Link to video of app in use: https://drive.google.com/file/d/17FBWc4GL9Kms-30NDx-fYQlHM0ARlUEs/view
 
 ## License
 
