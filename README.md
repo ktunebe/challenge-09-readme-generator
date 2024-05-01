@@ -8,9 +8,7 @@ This is a project for UW in which we were asked to create a README generator usi
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [License](#license)
-- [Tests](#tests)
 - [Questions](#questions)
 
 ## Installation
