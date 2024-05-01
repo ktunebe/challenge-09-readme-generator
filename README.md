@@ -19,7 +19,7 @@ Pull the contents of this repo into a local directory. Navigate to the /Develop 
 
 ## Usage
 
-Type 'node index.js' into the command line to run the program. It will ask you a series of questions and then generate a REAME.md file based on your answers.
+Type 'node index.js' into the command line to run the program. It will ask you a series of questions and then generate a README.md file based on your answers.
 
 Link to video of app in use: https://app.screencastify.com/v2/manage/videos/3D4JIPhgk2GViLat7v6z
 
